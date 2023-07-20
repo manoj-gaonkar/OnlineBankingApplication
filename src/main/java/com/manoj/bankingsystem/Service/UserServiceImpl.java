@@ -2,7 +2,7 @@ package com.manoj.bankingsystem.Service;
 
 import java.util.List;
 
-import org.hibernate.bytecode.internal.bytebuddy.PrivateAccessorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,6 +65,61 @@ public class UserServiceImpl implements UserService {
 		    return "Error: " + e.toString();
 		}
 
+	}
+	
+	// this is for authenticating admin
+	public String adminAuthenticate(loginDao loginDao) {
+		
+
+			User user = userRepository.findByUsername(loginDao.username);
+	
+			
+			if (user != null) {
+			    if (user.getRole().equals("admin")) {
+			        if (user.getPassword().equals(loginDao.password)) {
+						System.out.println("adsuncess");
+			            return "adminsuccess";
+			            
+			        } else {
+						System.out.println("wronpasss");
+			            return "wp";
+			        }
+			    } else {
+					System.out.println("user not authenticated");
+			        return "na";
+			    }
+			}else {
+				System.out.println("une");
+				return "une"; 
+			}
+
+
+	}
+	
+	// this is for authenticating staff
+	public String staffAuthenticate(loginDao loginDao) {
+		
+
+			User user = userRepository.findByUsername(loginDao.username);
+	
+			
+			if (user != null) {
+			    if (user.getRole().equals("staff")) {
+			        if (user.getPassword().equals(loginDao.password)) {
+
+			            return "staffsuccess";
+			            
+			        } else {
+						System.out.println("wronpasss");
+			            return "wp";
+			        }
+			    } else {
+					System.out.println("user not authenticated");
+			        return "na";
+			    }
+			}else {
+				return "une"; 
+			}
 	}
 
 	@Override
