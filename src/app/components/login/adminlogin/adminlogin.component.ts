@@ -40,7 +40,10 @@ export class AdminloginComponent {
 
       if(this.loginForm.valid)
       {
-        this.loginService.loginUser(user).subscribe(
+        this.userNotExistError=null;
+        this.wrongPasswordError=null;
+        this.notAdminError=null;
+        this.loginService.loginAdmin(user).subscribe(
         (response)=>{
           console.log(response.id);
           // changing authenticated to remove theuserlogin
@@ -50,13 +53,13 @@ export class AdminloginComponent {
         },
         (error)=>{
           console.log("this is error");
-          console.log(error.error);
+          console.log(error);
           if(error.error==="wrong password"){
             this.wrongPasswordError = "entered password is wrong";
           }
           else if(error.error==="user does not exist"){
             this.userNotExistError = error.error;
-          }else if(error.error==="user does not exist"){
+          }else if(error.error==="user is not authenticated"){
             this.notAdminError = error.error;
           }
         }

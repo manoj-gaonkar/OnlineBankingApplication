@@ -10,7 +10,7 @@
         <button *ngIf="!isAuthenticated" routerLink="register" class=" text-blue-200 h-full bg-white bg-opacity-0 hover:bg-opacity-10 px-3 ">Register</button>
       </li>
       <li>
-        <button *ngIf="isAuthenticated" routerLink="login" (click)="isAuthenticated=!isAuthenticated"  class=" text-blue-200 h-full bg-white bg-opacity-0 hover:bg-opacity-10 px-3 "  >Logout</button>
+        <button *ngIf="isAuthenticated" routerLink="login" (click)="isAuthenticated=!isAuthenticated && currentUserId=undefined"  class=" text-blue-200 h-full bg-white bg-opacity-0 hover:bg-opacity-10 px-3 "  >Logout</button>
       </li>
     </ul>
     

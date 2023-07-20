@@ -40,6 +40,8 @@ export class CustomerloginComponent {
 
       if(this.loginForm.valid)
       {
+        this.userNotExistError=null;
+        this.wrongPasswordError=null;
         this.loginService.loginUser(user).subscribe(
         (response)=>{
           console.log(response.id);

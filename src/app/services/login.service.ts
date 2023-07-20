@@ -20,4 +20,9 @@ export class LoginService {
     this.loginUrl =  "http://localhost:8080/api/v1.0/bank/login/admin";
     return this.http.post(`${this.loginUrl}`,loginUser)
   }
+
+  loginStaff(loginUser:Login):Observable<any>{
+    this.loginUrl =  "http://localhost:8080/api/v1.0/bank/login/staff";
+    return this.http.post(`${this.loginUrl}`,loginUser)
+  }
 }

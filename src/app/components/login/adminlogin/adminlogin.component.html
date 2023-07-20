@@ -5,6 +5,7 @@
     </label>
     <input formControlName="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border focus:border-zinc-400" id="username" type="text" placeholder="Username">
     <p class="text-xs text-red-400  " *ngIf="userNotExistError">user does not exist</p>
+    <p class="text-xs text-red-400  " *ngIf="notAdminError">user is not authenticated</p>
     <div *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.touched "  >
       <div  class="text-xs text-red-400  " *ngIf="loginForm.controls.username.errors">*username is required</div>
     </div>
