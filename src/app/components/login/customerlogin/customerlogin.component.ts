@@ -47,7 +47,7 @@ export class CustomerloginComponent {
           console.log(response.id);
           // changing authenticated to remove theuserlogin
           this.authService.setLoggedInStatus(true,response.id);
-          this.router.navigateByUrl('landing');
+          this.router.navigateByUrl('customerpage');
           console.log("this is success");
         },
         (error)=>{
