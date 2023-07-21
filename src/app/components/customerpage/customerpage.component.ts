@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,AfterViewInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-customerpage',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class CustomerpageComponent {
 
+  constructor(private userService:UserService){}
+  ngAfterViewInit():void{
+    this.userService.getTransactionList(7);
+    console.log(this.userService.getCustomerDetails());
+  }
 }
